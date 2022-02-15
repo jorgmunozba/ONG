@@ -1,0 +1,147 @@
+.bg-title{
+    padding: 3%;
+    background-color: rgb(68, 144, 146) !important;
+    color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+.bg-body{
+    background-color: rgba(68, 144, 146, 0.4) !important;
+}
+
+.bg-contenido{
+    margin-top: 4%;
+    background-color: white;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+table thead{
+    background-color: rgba(83, 44, 102, 0.4) !important;
+}
+
+.btn-nuevo{
+    display: block;
+    width: 100%;
+    background-color: rgb(126, 59, 138);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.btn-nuevo:hover{
+    background-color: rgba(126, 59, 138, 0.7);
+    color: white;
+}
+
+.imagen-masc{
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+}
+
+input{
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+}
+
+label, select{
+    margin-top: 30px;
+}
+
+.aceptar-modal{
+    background-color: rgb(156, 81, 158);
+    color: aliceblue;
+    font-family: sans-serif;
+    font-size: 20px;
+    width: 80%;
+    height: 40px;
+    padding: 2%;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.cancelar-modal{
+    background-color: gray;
+    color: aliceblue;
+    font-family: sans-serif;
+    font-size: 20px;
+    width: 80%;
+    height: 40px;
+    padding: 2%;
+    border-radius: 5px;
+    border-style: none;
+    margin-left: 20%;
+}
+
+.aceptar-modal:hover{
+    background-color: rgb(98, 46, 100);
+    cursor: pointer;
+    color: white;
+}
+
+.cancelar-modal:hover{
+    background-color: rgb(87, 83, 83);
+    cursor: pointer;
+    color: white;
+}
+
+
+
+.logo-modal{
+    width: 40%;
+    margin-top: 40px;
+}
+
+.modal-content{
+    background-color: rgb(46, 30, 46);
+}
+
+.mensaje-modal{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.btn-bloque{
+    display: block;
+    width: 100%;
+}
+
+.form{
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(107, 192, 164);
+    padding: 6%;
+    border-radius: 20px;
+}
+
+.btn{
+    color: white;
+    height: 45px;
+}
+
+.btn:hover{
+    color: white;
+}
+
+.enlace{
+    color: white;
+    text-decoration: none;
+    background-color: brown;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.enlace:hover{
+    color: white;
+    background-color: rgb(192, 85, 85);
+}

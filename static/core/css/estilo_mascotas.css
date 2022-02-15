@@ -1,0 +1,23 @@
+.imagen-mascota{
+    width: 100%;
+    display: block;
+    padding-top: 10%;
+    height: 550px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.btn-bloque{
+    display: block;
+    width: 100%;
+    margin-top: 20%;
+}
+
+.card-text{
+    color: white;
+    text-align: left;
+}
+
+.card-mascotas{
+    height: 500px;
+}

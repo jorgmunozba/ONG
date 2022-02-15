@@ -1,0 +1,105 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title>Donde estamos</title>
+    {% load static %}
+    <!--Bootstrap5-->
+    <link rel="stylesheet" href="{% static 'core/bootstrap-5.0.0/css/bootstrap.min.css' %}">
+    <script src="{% static 'core/bootstrap-5.0.0/js/bootstrap.min.js' %}"></script>
+
+    <!--Hoja css-->
+    <link rel="stylesheet" href="{% static 'core/css/estilo_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_cuerpo.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_footer.css' %}">
+
+    <!--jQuery5-->
+    <script src="{% static 'core/jQuery-3.6.0/jQuery-3.6.0.js' %}"></script>
+
+    <!--Hoja js-->
+    <script src="{% static 'core/js/Main.js'%}"></script>
+
+    <!--Estilos para el mapa-->
+    <style>
+        .mapa{
+            width: 100%;
+            display: block;
+            height: 500px;
+            border-radius: 20px;
+        }
+        .btn-oculto{
+            width: 100%;
+            display: block;
+            height: 20px;
+            background-color: rgb(20, 78, 20);
+            border: none;
+        }
+    </style>
+
+</head>
+<body>
+    <!--Header para agregar la barra navegadora-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse row" id="navbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="col-3 col-md-1 ms-5">
+                            <img src="{%static 'core/img/logo-ong.jpg'%}" class="logo-navbar">
+                        </div>
+                        <div class="col-4 col-md-1 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'inicio' %}" class="nav-link">Inicio</a>
+                            </li>
+                        </div>
+                        <div class="col-6 col-md-3 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'donde_estamos' %}" class="nav-link activo">¿Dónde estamos?</a>
+                            </li>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-3 col-md-1 ms-3">
+                            <li id="geo2" class ="nav-item">
+                                <button class="botonimagen" id="btnClima" class="btn btn-primary"> </button>
+                            </li>
+                        </div>
+                        <div class="col-3 ">
+                            <p id="geo"></p>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Contenido de la página-->
+    <div class="bg-body">
+        <div class="container bg-contenido">
+            <h1>NUESTRA UBICACIÓN</h1> <br>
+            <div class="row">
+                <div class="col-1 col-md-3"></div>
+                <div class="col-10 col-md-6">
+                    <!--mapa-->
+                    <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d5600.15993952934!2d-70.61889322783456!3d-33.42650251944685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sanimal%20hospital!5e0!3m2!1ses!2scl!4v1621866890411!5m2!1ses!2scl" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Pie de página-->
+    <footer>
+        <div class="bg-footer text-center">
+            <!--Logos amarillos o blancos-->
+            <img src="{% static 'core/img/rrss.png' %}" class="img-footer">
+            <!--Boton oculto-->
+            <a href="{% url 'panel_control' %}" class="btn-oculto"></a>
+        </div>
+
+        <!--Carga de script mapa-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    </footer>  
+</body>

@@ -1,0 +1,193 @@
+{%load static%}
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ayuda a un peludo</title>
+
+    {% load static %}
+    <!--Bootstrap5-->
+    <link rel="stylesheet" href="{% static 'core/bootstrap-5.0.0/css/bootstrap.min.css' %}">
+    <script src="{% static 'core/bootstrap-5.0.0/js/bootstrap.min.js' %}"></script>
+
+    <!--Hoja css-->
+    <link rel="stylesheet" href="{% static 'core/css/estilo_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_cuerpo.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_footer.css' %}">
+
+    <!--jQuery5-->
+    <script src="{% static 'core/jQuery-3.6.0/jQuery-3.6.0.js' %}"></script>
+
+    <!--Hoja js-->
+    <script src="{% static 'core/js/Main.js'%}"></script>
+
+    <style>
+        .btn-oculto{
+            width: 100%;
+            display: block;
+            height: 20px;
+            background-color: rgb(20, 78, 20);
+            border: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    {% load static %}
+    <!--Header para agregar la barra navegadora-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse row" id="navbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="col-3 col-md-1 ms-5">
+                            <img src="{%static 'core/img/logo-ong.jpg'%}" class="logo-navbar">
+                        </div>
+                        <div class="col-4 col-md-1 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'inicio' %}" class="nav-link activo">Inicio</a>
+                            </li>
+                        </div>
+                        <div class="col-6 col-md-3 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'donde_estamos' %}" class="nav-link">¿Dónde estamos?</a>
+                            </li>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-3 col-md-1 ms-3">
+                            <li id="geo2" class ="nav-item">
+                                <button class="botonimagen" id="btnClima" class="btn btn-primary"> </button>
+                            </li>
+                        </div>
+                        <div class="col-3 ">
+                            <p id="geo"></p>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Contenido de la página-->
+    <div class="bg-body">
+        <div class="container bg-contenido">
+            <div class="row">
+                <!--Cita bibliográfica-->
+                <div class="col-12 col-md-3 cita p-5">
+                    <p class="font-italic">
+                        La compasión por los animales está íntimamente asociada con la bondad del carácter y puede ser afirmado que el que
+                        es cruel con los animales no puede ser un buen hombre.
+                        <br> <br>
+                        <b>Arthur Schopenhaur</b>
+                    </p>
+                </div>
+                <!--Carousel-->
+                <div class="col-12 col-md-6">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <!--Imagen 1-->
+                            <div class="carousel-item active">
+                                <a href="">
+                                    <img src="{% static 'core/img/perros1.jpg' %}" class="d-block w-100 imagen-carousel" alt="perros">
+                                </a>
+                            </div>
+                            <!--Imagen 2-->
+                            <div class="carousel-item">
+                                <a href="">
+                                    <img src="{% static 'core/img/gatos1.jpg' %}" class="d-block w-100 imagen-carousel" alt="perros">
+                                </a>
+                            </div>
+                        </div>
+                        <!--Botones control carousel-->
+                        <button class="carousel-control-prev control" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next control" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <!--Video-->
+            </div>
+
+            <!--Card informativos-->
+            <div class="row mt-5">
+                <!--Card perros-->
+                <div class="col-12 col-md-3">
+                    <div class="card-body card-perros">
+                        <h5>Perros</h5>
+                        <img src="{% static 'core/img/perrocard.jpg' %}"  class ="rounded-corners card-imagen">
+                        <a href="{% url 'perros'%}" class="btn btn-primary card-btn">Adoptar</a>
+                    </div>
+                </div>
+                <!--Card gatos-->
+                <div class="col-12 col-md-3">
+                    <div class="card-body card-gatos">
+                        <h5>gatos</h5>
+                        <img src="{% static 'core/img/gatocard.jpg' %}"  class ="rounded-corners card-imagen">
+                        <a href="{% url 'gatos'%}" class="btn btn-primary card-btn">Adoptar</a>
+                    </div>
+                </div>
+                <!--Card nosotros-->
+                <div class="col-12 col-md-3">
+                    <div class="card-body card-nosotros">
+                        <h5>nosotros</h5>
+                        <img src="{% static 'core/img/clinica1.jpg' %}"  class ="rounded-corners card-imagen">
+                        <a href="{% url 'nosotros'%}" class="btn btn-primary card-btn">Conócenos</a>
+                    </div>
+                </div>
+                <!--Card contacto-->
+                <div class="col-12 col-md-3">
+                    <div class="card-body card-contacto">
+                        <h5>Contacto</h5>
+                        <img src="{% static 'core/img/telefono.jpg' %}"  class ="rounded-corners card-imagen">
+                        <a href="{% url 'contacto'%}" class="btn btn-primary card-btn">Contáctanos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--Testimonios-->
+            <div class="row mt-5 bg-testimonios">
+                <h1 class="mb-5 mt-5">TESTIMONIOS</h1>
+                <!--imagen-->
+                <div class="col-4">
+                    <img src ="{% static 'core/img/nocompres.jpg' %}" class="imagen-testimonio" >
+                </div>
+                <!--testimonio 1-->
+                <div class="col-4 border-start border-success mb-5">
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam quam neque eos cumque ipsa sint, doloremque ut, optio fugiat molestias delectus veritatis vitae similique molestiae temporibus harum vel! Odio, expedita!
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum sed temporibus ipsum velit esse officiis asperiores ullam non praesentium. Facilis ducimus qui in, nisi tempora distinctio fuga. Sed, facere nam.
+                        <br>
+                        <center> <b> Andrés, Concepción</b></center>
+                    </p>
+                </div>
+                <!--testimonio 2-->
+                <div class="col-4 border-start border-success mb-5">
+                    <p>
+                        Lorem ipsum dolor, sit amt consectetur adipisicing elit. Nostrum sed temporibus ipsum velit esse officiis asperiores ullam non praesentium. Facilis ducimus qui in, nisi tempora distinctio fuga. Sed, facere nam.
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum sed temporibus ipsum velit esse officiis asperiores ullam non praesentium. Facilis ducimus qui in, nisi tempora distinctio fuga. Sed, facere nam.
+                        <br>
+                        <center> <b> Lorena, Santiago</b> </center> 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Pie de página-->
+    <footer>
+        <div class="bg-footer text-center">
+            <!--Logos amarillos o blancos-->
+            <img src="{% static 'core/img/rrss.png' %}" class="img-footer">
+            <br>
+            <!--Boton oculto-->
+            <a href="{% url 'panel_control' %}" class="btn-oculto"></a>
+        </div>
+    </footer> 
+</body>

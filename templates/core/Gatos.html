@@ -1,0 +1,153 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <title>Ayuda a un peludo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    {% load static %}
+    <!--Bootstrap5-->
+    <link rel="stylesheet" href="{% static 'core/bootstrap-5.0.0/css/bootstrap.min.css' %}">
+    <script src="{% static 'core/bootstrap-5.0.0/js/bootstrap.min.js' %}"></script>
+
+    <!--Hoja css-->
+    <link rel="stylesheet" href="{% static 'core/css/estilo_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_cuerpo.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilo_mascotas.css' %}">
+
+    <!--jQuery5-->
+    <script src="{% static 'core/jQuery-3.6.0/jQuery-3.6.0.js' %}"></script>
+
+    <!--Hoja js-->
+    <script src="{% static 'core/js/Main.js'%}"></script>
+
+    <style>
+        .btn-oculto{
+            width: 100%;
+            display: block;
+            height: 20px;
+            background-color: rgb(20, 78, 20);
+            border: none;
+        }
+
+        .alert-info{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            color: rgb(37, 16, 93);
+            font-size: 20px;
+            font-style: italic;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    {% load static %}
+    <!--Header para agregar la barra navegadora-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse row" id="navbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="col-3 col-md-1 ms-5">
+                            <img src="{%static 'core/img/logo-ong.jpg'%}" class="logo-navbar">
+                        </div>
+                        <div class="col-4 col-md-1 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'inicio' %}" class="nav-link activo">Inicio</a>
+                            </li>
+                        </div>
+                        <div class="col-6 col-md-3 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'donde_estamos' %}" class="nav-link">¿Dónde estamos?</a>
+                            </li>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-3 col-md-1 ms-3">
+                            <li id="geo2" class ="nav-item">
+                                <button class="botonimagen" id="btnClima" class="btn btn-primary"> </button>
+                            </li>
+                        </div>
+                        <div class="col-3 ">
+                            <p id="geo"></p>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Contenido de la página-->
+    <div class="bg-body">
+        <div class="container bg-contenido">
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-2">
+                    <a href="{% url 'inicio' %}" class="btn btn-success btn-bloque">VOLVER</a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <!--Mascotas-->
+                <!--Si no hay registros, mostrar alert de info-->
+                {% if mensaje == "false" %}
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="alert-info text-center">
+                            Lo sentimos, en este momento no hay <b>GATOS</b> disponibles para adopción
+                        </div>
+                    </div>
+                </div>
+                <!--Si hay mascota para adopción, se muestran-->
+                {% elif mensaje == "true" %}
+                    {% for cat in gatos %}
+                        <div class="col-12 col-md-6">
+                            <div class="row">                      
+                                <!--Imágen de la mascota-->
+                                <div class="card card-mascotas card-gatos" style="width: 18rem;">
+                                    <img class="card-img-top imagen-mascota" src="{{cat.imagen.url}}" alt="">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            <b>ID: </b> {{cat.id_mascota}}
+                                            <br>
+                                            <b>Nombre:</b> {{cat.nombre}}
+                                            <br>
+                                            <b>Edad: </b> {{cat.edad}}
+                                            <br>
+                                            <b>Sexo:</b> {{cat.genero}}
+                                            <br>
+                                            {% if cat.esterilizado == '1' %}
+                                                <b>Esterilizado: </b> Sí
+                                            {% elif car.esterilizado == '0' %}
+                                                <b>Esterilizado: </b> No
+                                            {% endif %}
+                                            <br>
+                                            <b>Nro Chip: </b> {{cat.nroChip}}
+                                        </p>
+                                        <a href="{% url 'adopcion' cat.id_mascota %}" class="btn btn-primary btn-bloque mt-1">Adoptame</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!--Pie de página-->
+    <footer>
+        <div class="bg-footer text-center">
+            <!--Logos amarillos o blancos-->
+            <img src="{% static 'core/img/rrss.png' %}" class="img-footer">
+            <br>
+            <!--Boton oculto-->
+            <a href="{% url 'panel_control' %}" class="btn-oculto"></a>
+        </div>
+    </footer> 
+</body>

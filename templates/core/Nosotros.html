@@ -1,0 +1,142 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nosotros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    {% load static %}
+    <!--Bootstrap5-->
+    <link rel="stylesheet" href="{% static 'core/bootstrap-5.0.0/css/bootstrap.min.css' %}">
+    <script src="{% static 'core/bootstrap-5.0.0/js/bootstrap.min.js' %}"></script>
+
+    <!--Hoja css-->
+    <link rel="stylesheet" href="{% static 'core/css/estilo_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_cuerpo.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilo_nosotros.css' %}">
+
+    <!--jQuery5-->
+    <script src="{% static 'core/jQuery-3.6.0/jQuery-3.6.0.js' %}"></script>
+
+    <!--Hoja js-->
+    <script src="{% static 'core/js/Main.js'%}"></script>
+
+    <style>
+        .btn-oculto{
+            width: 100%;
+            display: block;
+            height: 20px;
+            background-color: rgb(20, 78, 20);
+            border: none;
+        }
+    </style>
+    
+</head>
+<body>
+    {% load static %}
+    <!--Header para agregar la barra navegadora-->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-nav">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse row" id="navbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <div class="col-3 col-md-1 ms-5">
+                            <img src="{%static 'core/img/logo-ong.jpg'%}" class="logo-navbar">
+                        </div>
+                        <div class="col-4 col-md-1 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'inicio' %}" class="nav-link activo">Inicio</a>
+                            </li>
+                        </div>
+                        <div class="col-6 col-md-3 ms-3">
+                            <li class="nav-item">
+                                <a href="{% url 'donde_estamos' %}" class="nav-link">¿Dónde estamos?</a>
+                            </li>
+                        </div>
+                        <div class="col-md-3"></div>
+                        <div class="col-3 col-md-1 ms-3">
+                            <li id="geo2" class ="nav-item">
+                                <button class="botonimagen" id="btnClima" class="btn btn-primary"> </button>
+                            </li>
+                        </div>
+                        <div class="col-3 ">
+                            <p id="geo"></p>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Contenido de la página-->
+    <div class="bg-body">
+        <div class="container bg-contenido">
+            <div class="row">
+                <div class="col-9"></div>
+                <div class="col-2">
+                    <a href="{% url 'inicio' %}" class="btn btn-success btn-bloque">VOLVER</a>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <!--Descripción-->
+                <h1>Bienvenidos a nuestra ONG</h1>
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <p class="nosotros-text">
+                        Fundación Ayuda a un peludo es una organización sin fines de lucro que nace el año 2014 de manera informal para
+                        luego el 2015 convertirse en Fundación, con la intención de dar solución a la problemática de Protección Animal y 
+                        Tenencia Responsable de Mascotas en nuestro país. Una de las primeras líneas de trabajo que ejecutamos en Huella 
+                        Animal fue el trabajo territorial, que si bien partió con acciones pequeñas, con el tiempo se ha visto ampliada tanto
+                        en territorio como en actividades. El tejido social que hemos construido mediante estas acciones involucra a vecinos, 
+                        instituciones públicas y privadas. El sector que comprende nuestro accionar en terreno es complejo, pues abarca el 
+                        centro neurálgico de la ciudad: Plaza Dignidad (ex Plaza Italia), Parque Bustamante, Parque Balmaceda, Parque Forestal 
+                        y Bellavista. Dentro de nuestro trabajo, destaca la rehabilitación conductual a cargo de un equipo compuesto por etólogos, 
+                        entrenadores y modificadores de conducta junto con el rescate de animales de alta complejidad que deben tener un abordaje 
+                        clínico especial y que deben contar con cuidados veterinarios de forma permanente. Nuestro directorio está compuesto por 
+                        un equipo multidisciplinario de profesionales que tienen a su cargo las diferentes áreas que comprenden nuestra 
+                        organización: Dirección, Área Veterinaria, Área de Comunicaciones, Área Comercial, Área de Recursos Humanos, las 
+                        cuales nos permiten tener un trabajo coordinado y competente en la materia. Además, contamos con un equipo de más de
+                        80 voluntarios activos.
+                    </p>
+                </div>
+            </div>
+            <!--Imágenes-->
+            <div class="row">
+                <!--Jorge-->
+                <div class="col-12 col-md-4">
+                    <img src="{% static 'core/img/jorge.jpg'%}" class="img-nosotros">
+                </div>
+                <!--cargos-->
+                <div class="col-12 col-md-4 info-nosotros">
+                    <h3>--------------o-------------</h3>
+                    <br>
+                    <h3>Sara Jeldres Parada Fundadora de la ONG</h3>
+                    <br>
+                    <h3>Jorge Muñoz Barrera Director</h3>
+                    <br>
+                    <h3>--------------o-------------</h3>
+                </div>
+                <!--Sara-->
+                <div class="col-12 col-md-4">
+                    
+                    <img src="{% static 'core/img/sara.jpg'%}" class="img-nosotros">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Pie de página-->
+    <footer>
+        <div class="bg-footer text-center">
+            <!--Logos amarillos o blancos-->
+            <img src="{% static 'core/img/rrss.png' %}" class="img-footer">
+            <br>
+            <!--Boton oculto-->
+            <a href="{% url 'panel_control' %}" class="btn-oculto"></a>
+        </div>
+    </footer> 
+</body>

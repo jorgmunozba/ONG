@@ -1,0 +1,28 @@
+.nosotros-text{
+    text-align: justify;
+    font-size: 18px;
+    margin-top: 10%;
+    color: rgb(41, 37, 37);
+}
+
+.bg-contenido{
+    background-color: rgba(231, 222, 204, 0.9);
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.img-nosotros{
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    height: 300px;
+    border: 2px;
+    border-style: solid;
+    border-color: green;
+}
+
+.info-nosotros{
+    background-color: rgb(153, 153, 31);
+    color: white;
+    text-align: center;
+}

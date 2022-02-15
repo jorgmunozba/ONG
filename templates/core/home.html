@@ -1,0 +1,235 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mascotas Registradas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    {% load static %}
+    <!--Bootstrap5-->
+    <link rel="stylesheet" href="{% static 'core/bootstrap-5.0.0/css/bootstrap.min.css' %}">
+    <script src="{% static 'core/bootstrap-5.0.0/js/bootstrap.min.js' %}"></script>
+
+    <!--Hoja css-->
+    <link rel="stylesheet" href="{% static 'core/css/estilo_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_mantenedor.css' %}">
+
+    <!--jQuery5-->
+    <script src="{% static 'core/jQuery-3.6.0/jQuery-3.6.0.js' %}"></script>
+
+
+<body class="bg-body">
+    {% load static %}
+
+    <!--Titulo-->
+    <div class="bg-title">
+        <h1>Listado de mascotas </h1>
+    </div>
+
+    {% if mensaje == "true" %}
+        <script>
+            $(document).ready(function () {
+                //mostra modal
+                $("#modal_ok").modal("show");
+                //hacer refresh página
+                $("#btn-aceptar").click(function(){
+                    window.location.href = "../../mascotas-registradas/";
+                });
+            });
+        </script>
+    {% elif mensaje == "false" %}
+        <script>
+            $(document).ready(function () {
+                $("#modal_error").modal("show");
+                //hacer refresh página
+                $("#btn-aceptar-error").click(function(){
+                    window.location.href = "../../mascotas-registradas/";
+                });
+
+                
+            });
+        </script>
+    {% endif %}
+
+
+    <div class="container bg-contenido table-responsive">
+        <!--Boton agregar mascota-->
+        <div class="row">
+            <div class="col-9"></div>
+            <div class="col-3">
+                <a href="{% url 'agregar_mascota' %}" class="btn btn-nuevo">NUEVA MASCOTA</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="row">ID mascota</th>
+                    <th>Nombre</th>
+                    <th>Nro Chip</th>
+                    <th>Edad</th>
+                    <th>Esterilizado</th>
+                    <th>Categoría</th>
+                    <th>Imagen</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--recorrer datos obtenidos de la bd-->
+                {% for masc in mascotas %}
+                    
+                    <tr>
+                        <th scope="col">{{masc.id_mascota}}</th>
+                        <td>{{masc.nombre}}</td>
+                        <td>{{masc.nroChip}}</td>
+                        <td>{{masc.edad}}</td>
+                        {% if masc.esterilizado == '0' %}
+                            <td>No</td>
+                        {% else %}
+                            <td>Sí</td>
+                        {% endif %}
+                        <td>{{masc.idTipo_mascota}}</td>
+                        <td>
+                            <img src="{{masc.imagen.url}}" class="imagen-masc">
+                        </td>
+                        <td>
+                            <a href="{% url 'modificar_mascota' masc.id_mascota %}" class="enlace">Editar</a>
+                            <a href="#" class="eliminar-tabla enlace" name="{{masc.id_mascota}}">Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>             
+    </div>
+
+    <!-- Modal Consulta -->
+    <div class="modal fade" id="modal_consulta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <img src=""
+                                class="logo-modal rounded mx-auto d-block">
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mensaje-modal">
+                            ¿Desea eliminar el registro?  <br>
+                            ¡La acción es irreversible!
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row btn-login">
+                            <div class="col-1 col-lg-1"></div>
+                            <div class="col-5 col-lg-5">
+                                <button type="button" class="btn cancelar-modal mb-5" data-bs-dismiss="modal">CANCELAR </button>
+                            </div>
+                            <div class="col-5 col-lg-5">
+                                <button type="button" class="btn aceptar-modal mb-5" data-bs-dismiss="modal" id="eliminar-mascota">ACEPTAR </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal OK-->
+    <div class="modal fade" id="modal_ok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <img src="{% static 'core/img/logo-confirm.png' %}"
+                                class="logo-modal rounded mx-auto d-block">
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mensaje-modal">¡¡Mascota eliminada exitosamente!!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row btn-login">
+                            <div class="col-2 col-lg-2"></div>
+                            <div class="col-10 col-lg-10">
+                                <button type="button" class="btn aceptar-modal mb-5" data-bs-dismiss="modal" id="btn-aceptar"> ACEPTAR </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Error -->
+    <div class="modal fade" id="modal_error" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="row">
+                    <div class="col-12">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <img src="{% static 'core/img/logo-error.png' %}"
+                                class="logo-modal rounded mx-auto d-block">
+                        </h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="mensaje-modal">
+                            ¡¡Error al eliminar mascota!!  <br>
+                            Vuelva a intentarlo más tarde
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row btn-login">
+                            <div class="col-2 col-lg-2"></div>
+                            <div class="col-10 col-lg-10">
+                                <button type="button" class="btn aceptar-modal mb-5" id="btn-aceptar-error" data-bs-dismiss="modal">
+                                    ACEPTAR </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <!--input oculto-->
+        <input id="input-oculto" type="hidden" value="">
+    </footer>
+
+
+    <script>
+        $(document).ready(function(){
+            var input_oculto = $("#input-oculto");
+
+            $(".eliminar-tabla").click(function() {
+                var id_mascota = $(this).attr('name');
+                $("#modal_consulta").modal("show");
+                input_oculto.val(id_mascota);
+                
+            });
+
+
+
+            $("#eliminar-mascota").click(function(){
+                var id_mascota = input_oculto.val();
+                window.location.href = "../eliminar-mascota/" + id_mascota + "/";
+            });
+        });
+    </script>
+</body>
+

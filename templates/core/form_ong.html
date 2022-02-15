@@ -1,0 +1,136 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    {% load static %}
+    <!--Bootstrap5-->
+    <link rel="stylesheet" href="{% static 'core/bootstrap-5.0.0/css/bootstrap.min.css' %}">
+    <script src="{% static 'core/bootstrap-5.0.0/js/bootstrap.min.js' %}"></script>
+
+    <!--Hoja css-->
+    <link rel="stylesheet" href="{% static 'core/css/estilo_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_footer.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/estilos_mantenedor.css' %}">
+
+    <!--jQuery5-->
+    <script src="{% static 'core/jQuery-3.6.0/jQuery-3.6.0.js' %}"></script>
+
+    <!--Pluguin validate de jQuery-->
+    <script src="{% static 'core/jQuery-3.6.0/jQuery-validation.js' %}"></script>
+
+    <!--Validaciones-->
+    <script src="{% static 'core/js/formulario_adop.js'%}"></script>
+
+    <!--Hoja js-->
+    
+
+
+<body class="bg-body">
+    {% load static %}
+
+    <!--Titulo-->
+    <div class="bg-title">
+        <h1>Registrar mascota </h1>
+    </div>
+    <!--Tabla-->
+    <div class="container bg-contenido">
+        <!--Boton agregar mascota-->
+        <div class="row">
+            <div class="col-9"></div>
+            <div class="col-3">
+                <a href="{% url 'panel_control' %}" class="btn btn-nuevo">VOLVER</a>
+            </div>
+        </div>
+        
+        <!--Mensajes-->
+        {% if mensaje == 'false' %}
+            <div class="alert-danger text-center pt-3 pb-3" role="alert">
+                Error al registrar mascota <br>
+                Vuelva a intentarlo más tarde
+            </div>
+            <br>
+        {% elif mensaje == 'true' %}
+            <div class="alert-success text-center pt-3 pb-3" role="alert">
+                ¡Guardado exitoso! <br>
+                Se ha guardado los datos exitosamente
+            </div>
+            <br>
+        {% endif %}
+        <br>
+        <form method="post" action="" id="formulario" enctype="multipart/form-data" class="form" novalidate>
+            {%csrf_token %}
+
+            <div class="row">
+                <!--Nro chip-->
+                <div class="col-2 text-end">
+                    <label for="">Nro Chip: </label>
+                </div>
+                <div class="col-2">
+                    {{form.nroChip}}
+                </div>
+                <!--Nombre-->
+                <div class="col-1 text-end">
+                    <label for="">Nombre: </label>
+                </div>
+                <div class="col-3">
+                    {{form.nombre}}
+                </div>
+                <!--esterilizado-->
+                <div class="col-2 text-end">
+                    <label for="">Esterilizado: </label>
+                </div>
+                <div class="col-1">
+                    {{form.esterilizado}}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <!--edad-->
+                <div class="col-2 text-end">
+                    <label for="">Edad: </label>
+                </div>
+                <div class="col-2">
+                    {{form.edad}}
+                </div>
+                <!--tipo-->
+                <div class="col-1 text-end">
+                    <label for="">Categoría: </label>
+                </div>
+                <div class="col-2">
+                    {{form.idTipo_mascota}}
+                </div>
+                <!--genero-->
+                <div class="col-2 text-end">
+                    <label for="">Género: </label>
+                </div>
+                <div class="col-1">
+                    {{form.genero}}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <!--imagen-->
+                <div class="col-2 text-end">Imagen: </div>
+                <div class="col-6">
+                    {{form.imagen}}
+                </div>
+            </div>
+            <br> <br>
+            <!--Botones-->
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-4">
+                    <button type="reset" class="btn btn-danger btn-bloque">LIMPIAR</button> 
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-warning btn-bloque">ENVIAR</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
